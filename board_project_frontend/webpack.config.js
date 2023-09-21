@@ -52,7 +52,10 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app',
-        changeOrigin: true
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
       }
     }
   },
