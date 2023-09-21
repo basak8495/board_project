@@ -51,7 +51,7 @@ module.exports = {
     overlay: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8090',
+        target: 'https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app',
         changeOrigin: true
       }
     }
