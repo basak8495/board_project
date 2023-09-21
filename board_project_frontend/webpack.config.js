@@ -53,9 +53,6 @@ module.exports = {
       '/api': {
         target: 'https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app',
         changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
       }
     }
   },
