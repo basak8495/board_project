@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boardproject.board.BoardDao">
+	
+	<!-- <resultMap type="com.example.boardproject.board.BoardRequestDto" id="boardRequestDtoMap">
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="date" column="date"/>
+		<result property="viewCount" column="view_count"/>
+		<result property="memberId" column="member_id"/>
+	</resultMap> -->
+	
+	<resultMap type="com.example.boardproject.board.BoardResponseDto" id="boardResponseDtoMap">
+		<result property="boardId" column="board_id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="date" column="date"/>
+		<result property="viewCount" column="view_count"/>
+		<result property="memberId" column="member_id"/>
+		<result property="nickname" column="nickname"/>
+	</resultMap>
+	
+	<!-- 게시글 리스트 불러오기 -->
+	<select id="selectBoardList" resultMap="boardResponseDtoMap">
+		SELECT b.board_id, b.title, b.content, b.date, b.view_count, m.nickname
+    	FROM Board b
+    	JOIN Member m ON b.member_id = m.member_id
+	</select>
+	
+	<!-- 게시글 조회수 증가 -->
+	<update id="updateBoardViewCount" parameterType="Long">
+		UPDATE Board
+		SET view_count = view_count + 1
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<!-- 특정 게시글 불러오기 -->
+	<select id="selectBoard" resultMap="boardResponseDtoMap" parameterType="Long">
+	  SELECT b.board_id, b.title, b.content, b.date, b.view_count, b.member_id, m.nickname
+	  FROM Board b
+	  JOIN Member m ON b.member_id = m.member_id
+	  WHERE b.board_id = #{boardId}
+	</select>
+	
+	<!-- 게시글 작성 -->
+	<insert id="insertBoard" parameterType="com.example.boardproject.board.BoardRequestDto" useGeneratedKeys="true" keyProperty="boardId">
+		INSERT INTO board (title, content, date, view_count, member_id)
+        VALUES (#{title}, #{content}, #{date}, #{viewCount}, #{memberId})
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="map">
+		UPDATE board
+		SET title = #{boardRequestDto.title}, content = #{boardRequestDto.content}
+		WHERE board_id = #{boardId}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="Long">
+		DELETE FROM Comment
+		WHERE board_id = #{boardId};
+	
+		DELETE FROM Board
+		WHERE board_id = #{boardId};
+	</delete>
+</mapper>

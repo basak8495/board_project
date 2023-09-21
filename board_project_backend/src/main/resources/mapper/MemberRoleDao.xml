@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boardproject.member_role.MemberRoleDao">
+	<resultMap type="com.example.boardproject.member_role.MemberRole" id="roleMap">
+		<result property="memberId" column="member_id"/>
+		<result property="roleId" column="role_id"/>
+	</resultMap>
+	
+    <insert id="insertMemberRole" parameterType="com.example.boardproject.member_role.MemberRole">
+        INSERT INTO member_role (member_id, role_id)
+        VALUES (#{memberId}, #{roleId})
+    </insert>
+</mapper>
