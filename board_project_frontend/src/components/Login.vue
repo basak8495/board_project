@@ -42,7 +42,7 @@
     methods: {
       submitForm() {
         // 로그인
-        this.$http.post("/api/login", this.loginForm, { withCredentials: true })
+        this.$axios.post("/api/login", this.loginForm, { withCredentials: true })
           .then(response => {
             // JWT Token decode
             localStorage.setItem("jwtToken", response.data);
