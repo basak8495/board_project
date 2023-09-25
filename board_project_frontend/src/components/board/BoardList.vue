@@ -41,7 +41,7 @@ export default {
   },
   mounted() {
     // 게시글 리스트 불러오기
-    this.$http.get("/api/board")
+    this.$http.get("https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app/api/board")
       .then(response => {
         this.tableData = response.data.sort((a, b) => {
           return b.boardId - a.boardId;
