@@ -48,13 +48,13 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:8090',
-    //     changeOrigin: true,
-    //   }
-    // }
+    overlay: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8090',
+        changeOrigin: true
+      }
+    }
   },
   performance: {
     hints: false
