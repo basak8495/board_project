@@ -49,18 +49,18 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8090',
-        changeOrigin: true
-      }
-    }
     // proxy: {
     //   '/api': {
-    //     target: 'https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app',
-    //     changeOrigin: true,
+    //     target: 'http://localhost:8090',
+    //     changeOrigin: true
     //   }
     // }
+    proxy: {
+      '/api': {
+        target: 'https://port-0-backend-4fju66f2clmsgujng.sel5.cloudtype.app/api',
+        changeOrigin: true,
+      }
+    }
   },
   performance: {
     hints: false
