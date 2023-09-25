@@ -2,7 +2,7 @@
   <div>
     <el-header height="65px">
       <el-row>
-        <el-col :span="5">게시판</el-col>
+        <el-col :span="5">게시판test</el-col>
         <div class="nav-right-content">
           <div class="user-info" v-if="isLoggedIn">
             <p>안녕하세요, {{ nickname }}님</p>
