@@ -43,9 +43,7 @@ export default {
     // 게시글 리스트 불러오기
     this.$axios.get("/api/board")
       .then(response => {
-        this.tableData = response.data.sort((a, b) => {
-          return b.boardId - a.boardId;
-        });
+        this.tableData = response.data;
       })
       .catch(error => {
         alert("게시판 리스트를 가져오는 중 오류가 발생했습니다.")
